@@ -1,150 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Chandan & Suhani - A Journey of Love</title>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chandan & Suhani — A Celebration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --peach:#ffe6d5;
+      --gold:#ffd36b;
+      --accent:#b86b3a;
+      --text:#3b2f2f;
+      --card-bg: rgba(255,255,255,0.9);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,var(--peach) 0%, var(--gold) 100%);color:var(--text);scroll-behavior:smooth}
 
-  html, body {
-    height: 100%;
-    scroll-behavior: smooth;
-    font-family: "Poppins", sans-serif;
-    color: white;
-    text-align: center;
-    overflow-x: hidden;
-  }
+    main{height:100vh;overflow-y:hidden}
+    section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px;position:relative;opacity:0;transition:opacity 2s ease;}
+    section.active{opacity:1}
 
-  section {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 1.5s ease, transform 1.5s ease;
-    opacity: 0;
-    transform: translateY(50px);
-  }
+    body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 10% 20%, rgba(255,255,255,0.06), transparent 10%), radial-gradient(circle at 80% 80%, rgba(0,0,0,0.03), transparent 12%);pointer-events:none;mix-blend-mode:overlay}
 
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    .card{width:1000px;max-width:92vw;background:var(--card-bg);border-radius:24px;padding:36px;box-shadow:0 18px 50px rgba(0,0,0,0.08);text-align:center}
+    h1{font-family:'Great Vibes',cursive;font-size:56px;margin:6px 0;color:var(--accent);text-shadow:0 6px 18px rgba(184,107,58,0.12)}
+    h2{font-size:20px;margin:8px 0;color:rgba(59,47,47,0.9)}
+    .lead{font-size:18px;line-height:1.9;color:#3b2f2f;margin-top:18px;opacity:0;transition:opacity 1.8s ease}
+    .lead.visible{opacity:1}
 
-  h1 {
-    font-size: 3em;
-    text-shadow: 0 0 10px gold;
-    margin-bottom: 20px;
-  }
+    .typing{display:inline-block;white-space:pre-wrap}
+    .cursor{display:inline-block;margin-left:6px;opacity:1;animation:blink 1s steps(2) infinite}
+    @keyframes blink{50%{opacity:0}}
 
-  p {
-    font-size: 1.3em;
-    width: 80%;
-    max-width: 700px;
-    line-height: 1.6em;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-  }
+    .emoji{font-size:36px;display:inline-block;transform:translateY(0);animation:float 3s ease-in-out infinite}
+    .emoji.glow{filter:drop-shadow(0 0 12px rgba(255,212,123,0.85))}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)} }
 
-  .typing {
-    border-right: 3px solid rgba(255, 255, 255, 0.8);
-    white-space: nowrap;
-    overflow: hidden;
-    width: 0;
-    animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
-  }
+    .hearts{position:fixed;inset:0;pointer-events:none;z-index:0}
+    .heart{position:absolute;width:22px;height:22px;background:var(--accent);transform:rotate(45deg);opacity:0.9;border-radius:3px}
+    .heart::before,.heart::after{content:"";position:absolute;width:22px;height:22px;background:var(--accent);border-radius:50%}
+    .heart::before{top:-11px;left:0}
+    .heart::after{left:-11px;top:0}
 
-  @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-  }
+    nav{position:fixed;right:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:5}
+    nav a{background:rgba(255,255,255,0.9);padding:10px 12px;border-radius:12px;text-decoration:none;color:var(--accent);font-weight:700;box-shadow:0 8px 18px rgba(0,0,0,0.06)}
 
-  @keyframes blink {
-    50% { border-color: transparent; }
-  }
-
-  /* Wallpapers */
-  #home {
-    background: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-  }
-
-  #story {
-    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-  }
-
-  #wishes {
-    background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-  }
-
-  /* Floating emojis */
-  .hearts span {
-    position: fixed;
-    display: block;
-    font-size: 1.5em;
-    color: rgba(255, 255, 255, 0.8);
-    animation: float 8s linear infinite;
-  }
-
-  @keyframes float {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-  }
-</style>
+    @media (max-width:720px){ h1{font-size:38px} .card{padding:22px} nav{right:10px} .lead{font-size:16px} }
+  </style>
 </head>
 <body>
+  <div class="hearts" id="hearts"></div>
+  <nav>
+    <a href="#home">🏠 Home</a>
+    <a href="#story">📖 Our Story</a>
+    <a href="#wishes">💌 Wishes</a>
+  </nav>
 
-<!-- Floating hearts -->
-<div class="hearts">
-  <span style="left:10%; animation-delay:0s;">💖</span>
-  <span style="left:30%; animation-delay:2s;">💞</span>
-  <span style="left:50%; animation-delay:4s;">💘</span>
-  <span style="left:70%; animation-delay:6s;">💕</span>
-  <span style="left:90%; animation-delay:8s;">💝</span>
-</div>
+  <audio id="bgMusic" loop preload="auto" crossorigin="anonymous">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/01/audio_76b234b730.mp3?filename=romantic-piano-ambient-11156.mp3" type="audio/mpeg">
+  </audio>
 
-<!-- Sections -->
-<section id="home" class="visible">
-  <h1 class="typing">💍 Chandan & Suhani 💍</h1>
-  <p>Welcome to our world of love, where two souls met by destiny and promised each other forever. Let every moment ahead shine brighter than the stars. ✨</p>
-</section>
+  <main id="main">
+    <section id="home">
+      <div class="card">
+        <h1 class="emoji glow">💍 Congratulations, Chandan & Suhani! 💖</h1>
+        <h2>Wishing you a lifetime of love and golden memories ✨</h2>
+        <p class="lead" id="homeLead"><span class="typing" id="homeTyping"></span><span class="cursor" id="homeCursor">▍</span></p>
+      </div>
+    </section>
 
-<section id="story">
-  <h1 class="typing">🌸 Our Story 🌸</h1>
-  <p>Every love story is special, but ours is my favorite. From the first hello to endless laughter, our hearts found home in each other’s smiles. 💫</p>
-</section>
+    <section id="story">
+      <div class="card">
+        <h1 class="emoji">📖 Our Story</h1>
+        <h2 class="emoji glow">Where two hearts became one</h2>
+        <p class="lead" id="storyLead"><span class="typing" id="storyTyping"></span><span class="cursor" id="storyCursor">▍</span></p>
+      </div>
+    </section>
 
-<section id="wishes">
-  <h1 class="typing">💞 Wishes 💞</h1>
-  <p>May this bond bloom with every sunrise, may laughter fill your days, and may your love forever light the path ahead. 🌹</p>
-</section>
+    <section id="wishes">
+      <div class="card">
+        <h1 class="emoji glow">💌 Wishes & Blessings</h1>
+        <h2>Messages for the newlyweds</h2>
+        <p class="lead" id="wishesLead"><span class="typing" id="wishesTyping"></span><span class="cursor" id="wishesCursor">▍</span></p>
+      </div>
+    </section>
+  </main>
 
-<script>
-  const sections = document.querySelectorAll("section");
-  let current = 0;
+  <script>
+    // Text content
+    const texts = {
+      home: `Welcome to this special page where we celebrate the beautiful union of Chandan & Suhani. Today is a day of joy, promises, and new beginnings — may your life together be filled with laughter, understanding, and endless warmth. Every sunrise bring you closer; every night wrap you in comfort. Congratulations on finding your forever. ✨`,
+      story: `Once upon a gentle turn of fate, two souls found each other amid life's everyday bustle. Their smiles discovered common ground, their dreams began to stitch together, and each shared moment became a thread in a tapestry of trust and tenderness. As Chandan and Suhani step forward hand-in-hand, their past becomes a cherished memory and their future a warmly lit path. May they continue to grow, to support, and to delight in the ordinary wonders of life together. 💕`,
+      wishes: `To the newlyweds: may your home be a haven of love, your conversations a source of laughter, and your challenges mere stepping stones to greater understanding. May your days be generous and your nights restful; may you dance through life with compassion, patience, and joy. Sending all our love and blessings as you begin this golden journey together. 🥂`
+    };
 
-  function showSection(index) {
-    sections.forEach((sec, i) => sec.classList.toggle("visible", i === index));
-    window.scrollTo({
-      top: sections[index].offsetTop,
-      behavior: 'smooth'
-    });
-  }
-
-  function autoScroll() {
-    if (current < sections.length - 1) {
-      current++;
-      showSection(current);
-    } else {
-      clearInterval(scrollInterval); // stop at the end
+    function typeWithFade(textEl, leadEl, cursorEl, text, speed=28, onComplete=null){
+      textEl.textContent = '';
+      leadEl.classList.remove('visible');
+      cursorEl.style.opacity = '1';
+      let i=0;
+      function step(){
+        if(i<text.length){
+          textEl.textContent += text.charAt(i);
+          i++;
+          if(i>Math.floor(text.length*0.08)){
+            leadEl.classList.add('visible');
+          }
+          setTimeout(step, speed);
+        }else{
+          cursorEl.style.opacity = '0';
+          if(onComplete) onComplete();
+        }
+      }
+      step();
     }
-  }
 
-  const scrollInterval = setInterval(autoScroll, 10000); // scroll every 10 seconds
-</script>
+    const sections = ['home','story','wishes'];
+    let currentIndex = 0;
+    const intervalMs = 10000; 
+    let scrollInterval;
 
+    function showSection(idx){
+      document.querySelectorAll('main section').forEach((sec,i)=>{
+        if(i===idx) sec.classList.add('active'); else sec.classList.remove('active');
+      });
+    }
+
+    function playSection(idx){
+      const id = sections[idx];
+      const typingEl = document.getElementById(id + 'Typing');
+      const leadEl = document.getElementById(id + 'Lead');
+      const cursorEl = document.getElementById(id + 'Cursor');
+      typeWithFade(typingEl, leadEl, cursorEl, texts[id], 28);
+    }
+
+    function gotoIndex(idx){
+      currentIndex = idx;
+      showSection(currentIndex);
+      const sectionEl = document.getElementById(sections[currentIndex]);
+      sectionEl.scrollIntoView({behavior:'smooth', block:'center'});
+      playSection(currentIndex);
+    }
+
+    function startScroll(){
+      gotoIndex(0);
+      scrollInterval = setInterval(()=>{
+        if(currentIndex < sections.length - 1){
+          currentIndex++;
+          gotoIndex(currentIndex);
+        } else {
+          clearInterval(scrollInterval); // ✅ stops at last section
+        }
+      }, intervalMs);
+    }
+
+    window.addEventListener('load', ()=>{
+      gotoIndex(0);
+      setTimeout(()=> startScroll(), 1200);
+      const music = document.getElementById('bgMusic');
+      try{ music.volume = 0.22; music.play().catch(()=>{}); }catch(e){}
+    });
+
+    // hearts
+    const hearts = document.getElementById('hearts');
+    function createHeart(){
+      const h = document.createElement('div');
+      h.className = 'heart';
+      const size = 8 + Math.random()*28;
+      h.style.width = size+'px'; h.style.height = size+'px';
+      h.style.left = Math.random()*100+'vw'; h.style.top = Math.random()*100+'vh';
+      h.style.opacity = (0.35 + Math.random()*0.6);
+      const dur = 4000 + Math.random()*7000;
+      hearts.appendChild(h);
+      requestAnimationFrame(()=>{ h.style.transition = `transform ${dur}ms linear, opacity ${dur}ms linear`; h.style.transform = `translateY(-120vh) rotate(45deg)`; h.style.opacity = '0'; });
+      setTimeout(()=>h.remove(), dur+200);
+    }
+    setInterval(createHeart, 350);
+
+    // nav links
+    document.querySelectorAll('nav a').forEach((a, i)=>{
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        clearInterval(scrollInterval);
+        gotoIndex(i);
+      });
+    });
+  </script>
 </body>
 </html>
