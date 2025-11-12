@@ -11,75 +11,41 @@
       --gold:#ffd36b;
       --accent:#b86b3a;
       --text:#3b2f2f;
-      --card-bg: rgba(255,255,255,0.92);
+      --card-bg: rgba(255,255,255,0.9);
     }
     *{box-sizing:border-box}
     html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,var(--peach) 0%, var(--gold) 100%);color:var(--text);scroll-behavior:smooth}
 
-    /* main layout */
     main{height:100vh;overflow-y:hidden}
     section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px;position:relative;opacity:0;transition:opacity 2s ease;}
     section.active{opacity:1}
 
-    body::before{content:"";position:fixed;inset:0;background:
-      radial-gradient(circle at 10% 20%, rgba(255,255,255,0.06), transparent 10%),
-      radial-gradient(circle at 80% 80%, rgba(0,0,0,0.03), transparent 12%);
-      pointer-events:none;mix-blend-mode:overlay}
+    body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 10% 20%, rgba(255,255,255,0.06), transparent 10%), radial-gradient(circle at 80% 80%, rgba(0,0,0,0.03), transparent 12%);pointer-events:none;mix-blend-mode:overlay}
 
-    .card{width:1000px;max-width:92vw;background:var(--card-bg);border-radius:24px;padding:36px;box-shadow:0 18px 50px rgba(0,0,0,0.08);text-align:left}
-    h1{font-family:'Great Vibes',cursive;font-size:46px;margin:0 0 8px 0;color:var(--accent);text-shadow:0 6px 18px rgba(184,107,58,0.12)}
-    h2{font-size:18px;margin:6px 0 12px 0;color:rgba(59,47,47,0.9)}
-    .lead{font-size:18px;line-height:1.9;color:#3b2f2f;margin-top:12px;opacity:0;transition:opacity 1.8s ease}
+    .card{width:1000px;max-width:92vw;background:var(--card-bg);border-radius:24px;padding:36px;box-shadow:0 18px 50px rgba(0,0,0,0.08);text-align:center}
+    h1{font-family:'Great Vibes',cursive;font-size:56px;margin:6px 0;color:var(--accent);text-shadow:0 6px 18px rgba(184,107,58,0.12)}
+    h2{font-size:20px;margin:8px 0;color:rgba(59,47,47,0.9)}
+    .lead{font-size:18px;line-height:1.9;color:#3b2f2f;margin-top:18px;opacity:0;transition:opacity 1.8s ease}
     .lead.visible{opacity:1}
 
-    /* --- Typing + cursor --- */
-    /* Allow wrapping — do not use nowrap; type character-by-character into text node */
-    .typing{
-      display:inline;            /* inline so it wraps naturally */
-      white-space:normal;        /* allow wrapping */
-      word-break:break-word;     /* break long words if needed */
-      font-size:18px;
-      line-height:1.9;
-    }
-    .cursor{
-      display:inline-block;
-      width:10px;
-      margin-left:6px;
-      vertical-align:bottom;
-      opacity:1;
-      animation:blink 1s steps(2) infinite;
-      color: rgba(59,47,47,0.85);
-      font-weight:700;
-      transform:translateY(-2px);
-    }
+    .typing{display:inline-block;white-space:pre-wrap}
+    .cursor{display:inline-block;margin-left:6px;opacity:1;animation:blink 1s steps(2) infinite}
     @keyframes blink{50%{opacity:0}}
 
-    /* emoji + glow */
-    .emoji{font-size:34px;display:inline-block;transform:translateY(0);animation:float 3s ease-in-out infinite}
+    .emoji{font-size:36px;display:inline-block;transform:translateY(0);animation:float 3s ease-in-out infinite}
     .emoji.glow{filter:drop-shadow(0 0 12px rgba(255,212,123,0.85))}
-    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)} }
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)} }
 
-    /* hearts */
     .hearts{position:fixed;inset:0;pointer-events:none;z-index:0}
     .heart{position:absolute;width:22px;height:22px;background:var(--accent);transform:rotate(45deg);opacity:0.9;border-radius:3px}
     .heart::before,.heart::after{content:"";position:absolute;width:22px;height:22px;background:var(--accent);border-radius:50%}
     .heart::before{top:-11px;left:0}
     .heart::after{left:-11px;top:0}
 
-    /* nav */
     nav{position:fixed;right:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:5}
     nav a{background:rgba(255,255,255,0.9);padding:10px 12px;border-radius:12px;text-decoration:none;color:var(--accent);font-weight:700;box-shadow:0 8px 18px rgba(0,0,0,0.06)}
 
-    /* responsive tweaks */
-    @media (max-width:920px){
-      .card{padding:24px}
-      h1{font-size:40px}
-    }
-    @media (max-width:520px){
-      .card{padding:18px}
-      h1{font-size:34px}
-      .cursor{display:inline-block; width:8px}
-    }
+    @media (max-width:720px){ h1{font-size:38px} .card{padding:22px} nav{right:10px} .lead{font-size:16px} }
   </style>
 </head>
 <body>
@@ -90,13 +56,11 @@
     <a href="#wishes">💌 Wishes</a>
   </nav>
 
-  <!-- optional hidden music kept — you can remove if not needed -->
-  <audio id="bgMusic" loop preload="auto" crossorigin="anonymous" style="display:none">
+  <audio id="bgMusic" loop preload="auto" crossorigin="anonymous">
     <source src="https://cdn.pixabay.com/download/audio/2022/03/01/audio_76b234b730.mp3?filename=romantic-piano-ambient-11156.mp3" type="audio/mpeg">
   </audio>
 
-  <main id="main" aria-live="polite">
-    <!-- Home -->
+  <main id="main">
     <section id="home">
       <div class="card">
         <h1 class="emoji glow">💍 Congratulations, Chandan & Suhani! 💖</h1>
@@ -105,7 +69,6 @@
       </div>
     </section>
 
-    <!-- Our Story -->
     <section id="story">
       <div class="card">
         <h1 class="emoji">📖 Our Story</h1>
@@ -114,7 +77,6 @@
       </div>
     </section>
 
-    <!-- Wishes -->
     <section id="wishes">
       <div class="card">
         <h1 class="emoji glow">💌 Wishes & Blessings</h1>
@@ -125,31 +87,27 @@
   </main>
 
   <script>
-    // Long texts for each section (unchanged)
+    // Text content
     const texts = {
       home: `Welcome to this special page where we celebrate the beautiful union of Chandan & Suhani. Today is a day of joy, promises, and new beginnings — may your life together be filled with laughter, understanding, and endless warmth. Every sunrise bring you closer; every night wrap you in comfort. Congratulations on finding your forever. ✨`,
       story: `Once upon a gentle turn of fate, two souls found each other amid life's everyday bustle. Their smiles discovered common ground, their dreams began to stitch together, and each shared moment became a thread in a tapestry of trust and tenderness. As Chandan and Suhani step forward hand-in-hand, their past becomes a cherished memory and their future a warmly lit path. May they continue to grow, to support, and to delight in the ordinary wonders of life together. 💕`,
       wishes: `To the newlyweds: may your home be a haven of love, your conversations a source of laughter, and your challenges mere stepping stones to greater understanding. May your days be generous and your nights restful; may you dance through life with compassion, patience, and joy. Sending all our love and blessings as you begin this golden journey together. 🥂`
     };
 
-    // typing + fade helper (appends characters to the typing span; wrapping allowed)
     function typeWithFade(textEl, leadEl, cursorEl, text, speed=28, onComplete=null){
-      // clear previous content
       textEl.textContent = '';
       leadEl.classList.remove('visible');
       cursorEl.style.opacity = '1';
-      let i = 0;
+      let i=0;
       function step(){
-        if(i < text.length){
-          // append next character (keeps normal wrapping)
+        if(i<text.length){
           textEl.textContent += text.charAt(i);
           i++;
-          // show the paragraph container after small progress for smooth fade
-          if(i > Math.floor(text.length * 0.06)){
+          if(i>Math.floor(text.length*0.08)){
             leadEl.classList.add('visible');
           }
           setTimeout(step, speed);
-        } else {
+        }else{
           cursorEl.style.opacity = '0';
           if(onComplete) onComplete();
         }
@@ -157,10 +115,9 @@
       step();
     }
 
-    // Sections and auto-scroll stopping at final
     const sections = ['home','story','wishes'];
     let currentIndex = 0;
-    const intervalMs = 10000; // 10s
+    const intervalMs = 10000; 
     let scrollInterval;
 
     function showSection(idx){
@@ -174,7 +131,7 @@
       const typingEl = document.getElementById(id + 'Typing');
       const leadEl = document.getElementById(id + 'Lead');
       const cursorEl = document.getElementById(id + 'Cursor');
-      typeWithFade(typingEl, leadEl, cursorEl, texts[id], 26);
+      typeWithFade(typingEl, leadEl, cursorEl, texts[id], 28);
     }
 
     function gotoIndex(idx){
@@ -192,47 +149,39 @@
           currentIndex++;
           gotoIndex(currentIndex);
         } else {
-          clearInterval(scrollInterval); // stops at last page
+          clearInterval(scrollInterval); // ✅ stops at last section
         }
       }, intervalMs);
     }
 
     window.addEventListener('load', ()=>{
       gotoIndex(0);
-      setTimeout(startScroll, 1200);
-
-      // attempt to start hidden music (optional)
+      setTimeout(()=> startScroll(), 1200);
       const music = document.getElementById('bgMusic');
-      try { music.volume = 0.22; music.play().catch(()=>{}); } catch(e){}
+      try{ music.volume = 0.22; music.play().catch(()=>{}); }catch(e){}
     });
 
-    // floating hearts generator
+    // hearts
     const hearts = document.getElementById('hearts');
     function createHeart(){
       const h = document.createElement('div');
       h.className = 'heart';
       const size = 8 + Math.random()*28;
-      h.style.width = size + 'px';
-      h.style.height = size + 'px';
-      h.style.left = Math.random()*100 + 'vw';
-      h.style.top = Math.random()*100 + 'vh';
+      h.style.width = size+'px'; h.style.height = size+'px';
+      h.style.left = Math.random()*100+'vw'; h.style.top = Math.random()*100+'vh';
       h.style.opacity = (0.35 + Math.random()*0.6);
       const dur = 4000 + Math.random()*7000;
       hearts.appendChild(h);
-      requestAnimationFrame(()=>{ 
-        h.style.transition = `transform ${dur}ms linear, opacity ${dur}ms linear`; 
-        h.style.transform = `translateY(-120vh) rotate(45deg)`; 
-        h.style.opacity = '0'; 
-      });
-      setTimeout(()=> h.remove(), dur + 200);
+      requestAnimationFrame(()=>{ h.style.transition = `transform ${dur}ms linear, opacity ${dur}ms linear`; h.style.transform = `translateY(-120vh) rotate(45deg)`; h.style.opacity = '0'; });
+      setTimeout(()=>h.remove(), dur+200);
     }
     setInterval(createHeart, 350);
 
-    // nav links stop auto-scroll and jump to section
+    // nav links
     document.querySelectorAll('nav a').forEach((a, i)=>{
       a.addEventListener('click', (e)=>{
         e.preventDefault();
-        if (typeof scrollInterval !== 'undefined') clearInterval(scrollInterval);
+        clearInterval(scrollInterval);
         gotoIndex(i);
       });
     });
