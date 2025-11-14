@@ -1,186 +1,257 @@
-<!doctype html>
+<!-- FULLY FIXED WEDDING WEBSITE + HEART PARTICLES + FULL BACKGROUNDS + NO SCROLL IN HOME/OUR STORY -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Chandan & Suhani – A Journey of Love</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding | Chandan & Suhani</title>
 
   <style>
-    :root{
-      --accent: #ff7aa2;
-      --muted: rgba(255,255,255,0.85);
-      --glass: rgba(255,255,255,0.06);
-      --blur: 10px;
-      --ease: cubic-bezier(.2,.9,.25,1);
+    /* GLOBAL STYLES */
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:'Poppins',system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;scroll-behavior:smooth;}
 
-    .site{min-height:100vh;display:flex;flex-direction:column;background:#05040a;color:var(--muted);overflow:hidden;position:relative;}
-    header{position:fixed;left:0;right:0;top:0;z-index:40;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(6px);}
-    .brand{display:flex;gap:12px;align-items:center}
-    .brand h1{font-family:'Great Vibes';font-size:28px;margin:0;color:white;letter-spacing:0.6px}
-    nav{display:flex;gap:12px}
-    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:12px;transition:all .28s var(--ease)}
-    nav a:hover{background:var(--glass);transform:translateY(-3px);}
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
 
-    main{flex:1;position:relative;}
-    section{min-height:100vh;padding:120px 20px 60px;display:flex;align-items:center;justify-content:center;position:absolute;top:0;left:0;width:100%;opacity:0;transition:opacity 0.8s ease-in-out;}
-    section.active{opacity:1;}
+    /* SECTION SLIDER */
+    .section {
+      height: 100vh;
+      width: 100vw;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      transition: all 1s ease-in-out;
+    }
+    .active { left: 0; }
 
-    .intro{background-image:linear-gradient(180deg, rgba(10,5,20,0.3), rgba(5,2,15,0.7)), url('https://wallpapers.com/images/hd/anime-romantic-stars-0jgeoodxtcmwhw1z.jpg');background-size:cover;background-position:center}
-    .home{background-image:linear-gradient(180deg, rgba(5,4,10,0.25), rgba(5,4,10,0.6)), url('https://i.pinimg.com/736x/54/ac/34/54ac34b5d7760f2c24766cb229d5ca5c.jpg');background-size:cover;background-position:center}
-    .story{background-image:linear-gradient(180deg, rgba(3,6,23,0.25), rgba(2,3,12,0.6)), url('https://wallpapers.com/images/hd/aesthetic-anime-city-with-world-tree-0jgeoodxtcmwhw1z.jpg');background-size:cover;background-position:center}
-    .wishes{background-image:linear-gradient(180deg, rgba(20,6,8,0.25), rgba(5,2,2,0.6)), url('https://wallpapers.com/images/hd/purple-sky-anime-city-jfyl3kuulzsbh0oa.jpg');background-size:cover;background-position:center}
+    /* START, HOME, OUR STORY SECTIONS */
+    #start, #home, #ourstory {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;  /* vertical center */
+      align-items: center;      /* horizontal center */
+      text-align: center;
+      padding: 0 20px;
+      overflow: hidden;
+    }
 
-    .card{max-width:1000px;width:100%;background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:36px;border-radius:18px;backdrop-filter:blur(var(--blur));box-shadow:0 8px 30px rgba(2,2,8,0.6);border:1px solid rgba(255,255,255,0.04);position:relative;z-index:10;text-align:center;}
-    h2{margin:0 0 8px 0;opacity:0;transform:translateY(20px);animation:fadeSlideIn 1.5s forwards ease-in-out;}
+    /* BACKGROUNDS */
+    #start {
+      background: url('https://i.ibb.co/GfCq8bBr/Whats-App-Image-2025-11-14-at-7-04-59-PM.jpg') no-repeat center/cover;
+    }
+    #home {
+      background: url('https://i.ibb.co/PsrddPWy/Whats-App-Image-2025-11-14-at-7-05-00-PM-2.jpg') no-repeat center/cover;
+      background-size: cover;
+    }
+    #ourstory {
+      background: url('https://i.ibb.co/ymb7xJKC/Whats-App-Image-2025-11-14-at-7-04-58-PM.jpg') no-repeat center/cover;
+      background-size: cover;
+    }
 
-    .typing { display: inline-block; border-right: 2px solid var(--accent); white-space: nowrap; overflow: hidden; }
-    p.lead{margin:0;font-size:18px;opacity:0;transform:translateY(20px);}
-    p.lead:not(.typing){animation:fadeSlideIn 1.5s forwards ease-in-out; animation-delay:0.5s;}
+    /* OVERLAY + BLUR */
+    #start::before, #home::before, #ourstory::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(3px);
+      z-index: 0;
+    }
 
-    @keyframes fadeSlideIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+    /* TEXT */
+    #start h1, #start h3, #start button,
+    #home h1, #home p,
+    #ourstory h1, #ourstory p {
+      position: relative;
+      z-index: 1;
+      color: white;
+      text-shadow: 0 0 8px black;
+      margin: 5px 0;
+      line-height: 1.4;
+    }
 
-    .glow-emoji{font-size:34px;display:inline-block;padding:6px;border-radius:50%;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(255,120,160,0.45));}
-    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+    /* FONT SIZES */
+    #start h1 { font-size: 45px; }
+    #start h3 { font-size: 22px; }
+    #start button { font-size: 22px; padding: 14px 40px; border: none; border-radius: 30px; background: rgba(255,255,255,0.85); cursor: pointer; }
 
-    .petals{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-    .petal{position:absolute;width:28px;height:28px;background:radial-gradient(circle at 40% 30%, rgba(255,183,197,0.95), rgba(255,115,140,0.8));border-radius:50%;opacity:0.85;transform:rotate(20deg);animation:petalFloat linear infinite}
-    @keyframes petalFloat{from{transform:translateY(-10vh) rotate(0deg);opacity:0}25%{opacity:0.9}to{transform:translateY(120vh) rotate(360deg);opacity:0}}
+    #home h1, #ourstory h1 { font-size: 36px; }
+    #home p, #ourstory p { font-size: 22px; max-width: 80%; }
 
-    .emoji-layer { position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index:5; }
-    .emoji { position:absolute; font-size:24px; animation:floatEmoji linear infinite; }
-    @keyframes floatEmoji { 0% { transform: translateY(100vh) rotate(0deg); opacity:0; } 25% { opacity:1; } 100% { transform: translateY(-10vh) rotate(360deg); opacity:0; } }
+    /* MENU */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.9);
+      padding: 10px;
+      display: none;
+      justify-content: center;
+      gap: 30px;
+      z-index: 10;
+      backdrop-filter: blur(6px);
+    }
+    nav a {
+      cursor: pointer;
+      font-weight: 600;
+      color: #d63384;
+      text-decoration: none;
+      font-size: 18px;
+    }
 
-    @media (max-width:780px){h2{font-size:28px}.card{padding:20px;border-radius:14px}header{padding:8px 14px}}
-    main::before{content:'';position:absolute;inset:0;background:radial-gradient(circle, rgba(255,182,197,0.08) 0%, rgba(0,0,0,0) 80%);opacity:0;transition:opacity 0.8s ease-in-out;pointer-events:none;z-index:5;}
-    main.glow::before{opacity:1;}
+    /* GALLERY */
+    #gallery {
+      background:#ffe6ea;
+      text-align: center;
+      padding: 120px 20px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 15px;
+      padding: 10px 20px;
+    }
+    .gallery-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 15px;
+      transition:0.4s;
+      box-shadow:0 0 10px rgba(0,0,0,0.2);
+      max-height: 400px;
+    }
+    .gallery-img:hover { transform:scale(1.03); }
+
+    /* WISHES */
+    #wishes {
+      background:#fff6f0;
+      text-align: center;
+      padding: 120px 20px;
+    }
+    .wish-box{
+      width:80%;
+      margin:auto;
+      background:white;
+      padding:20px;
+      border-radius:20px;
+      box-shadow:0 0 10px #ccc;
+      animation:pop 1s ease;
+    }
+    @keyframes pop {
+      0%{transform:scale(.5); opacity:0;}
+      100%{transform:scale(1); opacity:1;}
+    }
+
+    /* ❤️ HEART PARTICLE */
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      font-size: 25px;
+      color: #ff5c8a;
+      animation: fly 6s linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+    @keyframes fly {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      20% {opacity: 1;}
+      100% { transform: translateY(-120vh) scale(1.8); opacity: 0; }
+    }
   </style>
 </head>
 <body>
-  <div class="site">
-    <header>
-      <div class="brand">
-        <h1>Chandan &amp; Suhani</h1>
-        <div style="font-size:12px;color:var(--muted);margin-left:4px">— A Journey of Love</div>
-      </div>
-      <nav>
-        <a href="#intro">Congratulations</a>
-        <a href="#home">Home</a>
-        <a href="#story">Our Story</a>
-        <a href="#wishes">Wishes</a>
-      </nav>
-    </header>
 
-    <main>
-      <section id="intro" class="intro active">
-        <div class="card">
-          <h2>Congratulations on Your Marriage! <span class="glow-emoji">💖</span></h2>
-          <p class="lead">Celebrating the beautiful union of <strong>Chandan & Suhani</strong>. May your journey together be filled with endless love, laughter, and happiness!</p>
-        </div>
-      </section>
+<!-- NAV -->
+<nav id="menuNav">
+  <a onclick="showPage('home')">Home</a>
+  <a onclick="showPage('ourstory')">Our Story</a>
+  <a onclick="showPage('gallery')">Gallery</a>
+  <a onclick="showPage('wishes')">Wishes</a>
+</nav>
 
-      <section id="home" class="home">
-        <div class="card">
-          <h2>Welcome to our celebration <span class="glow-emoji">🌅</span></h2>
-          <p class="lead typing" data-text="Join Chandan & Suhani as they step into a new chapter. Save the date, share wishes, and celebrate love."></p>
-          <p class="lead">We are thrilled to have you witness the beginning of our forever. Your presence, blessings, and smiles mean everything to us!</p>
-        </div>
-        <div class="petals" aria-hidden="true"></div>
-      </section>
+<!-- START PAGE -->
+<section id="start" class="section active">
+  <h1>Chandan ❤️ Suhani</h1>
+  <h3>Wedding Date: 05 February 2025</h3>
+  <button id="enterBtn">ENTER</button>
+</section>
 
-      <section id="story" class="story">
-        <div class="card">
-          <h2>Our Story <span class="glow-emoji">✨</span></h2>
-          <p class="lead typing" data-text="We met under surprising skies and found home in each other's laughter. From first meeting to forever — here's our journey, in short snapshots and whispered memories."></p>
-          <p class="lead">From adventures in the city to quiet moments under the stars, our journey has been filled with love, laughter, and unforgettable memories.</p>
-        </div>
-      </section>
+<!-- HOME PAGE -->
+<section id="home" class="section">
+  <h1>Welcome to Our Wedding Website 💖</h1>
+  <p>Hum dono ki khubsurat journey ka hissa banne ke liye dhanyavaad. 
+     Yeh din hamare liye bahut khaas hai, aur hum chahte hain ki 
+     aap is anmol pal ko hamaare saath mehsoos karein.</p>
+</section>
 
-      <section id="wishes" class="wishes">
-        <div class="card">
-          <h2>Wishes &amp; Messages <span class="glow-emoji">🌹</span></h2>
-          <p class="lead typing" data-text="Leave your love, blessings, and a small wish for the couple. Your words mean the world."></p>
-          <p class="lead">We cherish your kind words and heartfelt wishes. Each message will be a treasure in our hearts as we begin this new chapter together.</p>
-        </div>
-      </section>
-    </main>
+<!-- OUR STORY -->
+<section id="ourstory" class="section">
+  <h1>Our Story 💞</h1>
+  <p>Chandan aur Suhani ki kahani ek choti si mulakaat se shuru hui, 
+     jo dheere-dheere pyaar mein badal gayi. Har din ek naye ehsaas, 
+     ek nayi muskaan aur ek nayi yaad lekar aata gaya.</p>
+</section>
 
-    <div class="emoji-layer"></div>
+<!-- GALLERY -->
+<section id="gallery" class="section">
+  <h1>Gallery 📸</h1>
+  <div class="gallery-grid">
+    <img class="gallery-img" src="https://i.ibb.co/qSH5CrD/Whats-App-Image-2025-11-14-at-7-05-01-PM.jpg">
+    <img class="gallery-img" src="https://i.ibb.co/PsrddPWy/Whats-App-Image-2025-11-14-at-7-05-00-PM-2.jpg">
+    <img class="gallery-img" src="https://i.ibb.co/hRnK8mCR/Whats-App-Image-2025-11-14-at-7-05-00-PM-1.jpg">
+    <img class="gallery-img" src="https://i.ibb.co/whHFrcKQ/Whats-App-Image-2025-11-14-at-7-05-00-PM.jpg">
+    <img class="gallery-img" src="https://i.ibb.co/mr7sRPh2/Whats-App-Image-2025-11-14-at-7-04-59-PM-1.jpg">
+    <img class="gallery-img" src="https://i.ibb.co/GfCq8bBr/Whats-App-Image-2025-11-14-at-7-04-59-PM.jpg">
+    <img class="gallery-img" src="https://i.ibb.co/ymb7xJKC/Whats-App-Image-2025-11-14-at-7-04-58-PM.jpg">
   </div>
+</section>
 
-  <script>
-    const sections = document.querySelectorAll('section');
-    const main = document.querySelector('main');
-    let current = 0;
+<!-- WISHES -->
+<section id="wishes" class="section">
+  <h1>Best Wishes 💐</h1>
+  <div class="wish-box">
+    <p>Aap sabki shubhkaamnayein hamare liye bahut maayne rakhti hain. 
+       Apni wishes yahan likh kar hamare din ko aur khaas banaayein.</p>
+  </div>
+</section>
 
-    function typeText(el){
-      const text = el.dataset.text;
-      el.textContent = '';
-      let i = 0;
-      function type(){
-        if(i < text.length){ el.textContent += text.charAt(i); i++; setTimeout(type, 40); }
-      }
-      type();
-    }
+<script>
+let current = "start";
 
-    function showSection(index){
-      sections.forEach(sec => sec.classList.remove('active'));
-      sections[index].classList.add('active');
-      main.classList.add('glow');
-      setTimeout(() => { main.classList.remove('glow'); }, 800);
-      const typingEl = sections[index].querySelector('.typing');
-      if(typingEl){ typeText(typingEl); }
-    }
+function showPage(pageId){
+  document.getElementById(current).classList.remove("active");
+  document.getElementById(pageId).classList.add("active");
+  current = pageId;
+}
 
-    function autoScroll(){
-      if(current < sections.length - 1){ current++; showSection(current); setTimeout(autoScroll, 6000); }
-    }
+/* ENTER CLICK → GO TO HOME */
+document.getElementById("enterBtn").addEventListener("click", () => {
+  document.getElementById("start").classList.remove("active");
+  document.getElementById("home").classList.add("active");
+  document.getElementById("menuNav").style.display = "flex";
+  current = "home";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
-    window.onload = () => { setTimeout(() => showSection(0), 500); setTimeout(autoScroll, 3000); };
+/* ❤️ Floating Hearts */
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 7000);
+}, 500);
+</script>
 
-    document.querySelectorAll('nav a').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        const id = a.getAttribute('href').slice(1);
-        const targetIndex = Array.from(sections).findIndex(sec => sec.id === id);
-        if(targetIndex !== -1){ current = targetIndex; showSection(current); }
-      });
-    });
-
-    const petalsContainer = document.querySelector('.petals');
-    function makePetals(count=20){
-      for(let i=0;i<count;i++){
-        const el=document.createElement('div');
-        el.className='petal';
-        el.style.left=Math.random()*100+'%';
-        el.style.top=(-10-Math.random()*10)+'vh';
-        el.style.width=(18+Math.random()*26)+'px';
-        el.style.height=el.style.width;
-        el.style.opacity=(0.6+Math.random()*0.4);
-        el.style.animationDuration=(9+Math.random()*10)+'s';
-        el.style.animationDelay=(Math.random()*-8)+'s';
-        petalsContainer.appendChild(el);
-      }
-    }
-    makePetals();
-
-    const emojiLayer = document.querySelector('.emoji-layer');
-    const emojis = ['🌸','✨','💖','🌹','💫','💍','🌷'];
-    for(let i=0;i<30;i++){
-      const span = document.createElement('span');
-      span.className='emoji';
-      span.textContent = emojis[Math.floor(Math.random()*emojis.length)];
-      span.style.left = Math.random()*100 + '%';
-      span.style.fontSize = 12 + Math.random()*28 + 'px';
-      span.style.animationDuration = 6 + Math.random()*8 + 's';
-      span.style.animationDelay = Math.random()*-10 + 's';
-      emojiLayer.appendChild(span);
-    }
-  </script>
 </body>
 </html>
