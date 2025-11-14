@@ -1,4 +1,4 @@
-<!-- FULLY FIXED WEDDING WEBSITE + HEART PARTICLES + FULL BACKGROUNDS + NO SCROLL IN HOME/OUR STORY -->
+<!-- FULLY FIXED WEDDING WEBSITE + GITHUB IMAGE LINK -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,25 +8,11 @@
 
   <style>
     /* GLOBAL STYLES */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
     /* SECTION SLIDER */
-    .section {
-      height: 100vh;
-      width: 100vw;
-      position: absolute;
-      top: 0;
-      left: 100%;
-      transition: all 1s ease-in-out;
-    }
+    .section { height: 100vh; width: 100vw; position: absolute; top: 0; left: 100%; transition: all 1s ease-in-out; }
     .active { left: 0; }
 
     /* START, HOME, OUR STORY SECTIONS */
@@ -35,24 +21,19 @@
       height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;  /* vertical center */
-      align-items: center;      /* horizontal center */
+      justify-content: center;
+      align-items: center;
       text-align: center;
       padding: 0 20px;
       overflow: hidden;
     }
 
     /* BACKGROUNDS */
-    #start {
-      background: url('https://i.ibb.co/GfCq8bBr/Whats-App-Image-2025-11-14-at-7-04-59-PM.jpg') no-repeat center/cover;
-    }
-    #home {
-      background: url('https://i.ibb.co/PsrddPWy/Whats-App-Image-2025-11-14-at-7-05-00-PM-2.jpg') no-repeat center/cover;
-      background-size: cover;
-    }
-    #ourstory {
-      background: url('https://i.ibb.co/ymb7xJKC/Whats-App-Image-2025-11-14-at-7-04-58-PM.jpg') no-repeat center/cover;
-      background-size: cover;
+    #start { background: url('https://i.ibb.co/GfCq8bBr/Whats-App-Image-2025-11-14-at-7-04-59-PM.jpg') no-repeat center/cover; }
+    #home { background: url('https://i.ibb.co/PsrddPWy/Whats-App-Image-2025-11-14-at-7-05-00-PM-2.jpg') no-repeat center/cover; background-size: cover; }
+    #ourstory { 
+      background: url('https://raw.githubusercontent.com/patelbadal12222/gift1/main/image/WhatsApp%20Image%202025-11-14%20at%207.04.58%20PM.jpeg') no-repeat center/cover; 
+      background-size: cover; 
     }
 
     /* OVERLAY + BLUR */
@@ -99,72 +80,22 @@
       z-index: 10;
       backdrop-filter: blur(6px);
     }
-    nav a {
-      cursor: pointer;
-      font-weight: 600;
-      color: #d63384;
-      text-decoration: none;
-      font-size: 18px;
-    }
+    nav a { cursor: pointer; font-weight: 600; color: #d63384; text-decoration: none; font-size: 18px; }
 
     /* GALLERY */
-    #gallery {
-      background:#ffe6ea;
-      text-align: center;
-      padding: 120px 20px;
-    }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 15px;
-      padding: 10px 20px;
-    }
-    .gallery-img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      border-radius: 15px;
-      transition:0.4s;
-      box-shadow:0 0 10px rgba(0,0,0,0.2);
-      max-height: 400px;
-    }
+    #gallery { background:#ffe6ea; text-align: center; padding: 120px 20px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; padding: 10px 20px; }
+    .gallery-img { width: 100%; height: auto; object-fit: contain; border-radius: 15px; transition:0.4s; box-shadow:0 0 10px rgba(0,0,0,0.2); max-height: 400px; }
     .gallery-img:hover { transform:scale(1.03); }
 
     /* WISHES */
-    #wishes {
-      background:#fff6f0;
-      text-align: center;
-      padding: 120px 20px;
-    }
-    .wish-box{
-      width:80%;
-      margin:auto;
-      background:white;
-      padding:20px;
-      border-radius:20px;
-      box-shadow:0 0 10px #ccc;
-      animation:pop 1s ease;
-    }
-    @keyframes pop {
-      0%{transform:scale(.5); opacity:0;}
-      100%{transform:scale(1); opacity:1;}
-    }
+    #wishes { background:#fff6f0; text-align: center; padding: 120px 20px; }
+    .wish-box{ width:80%; margin:auto; background:white; padding:20px; border-radius:20px; box-shadow:0 0 10px #ccc; animation:pop 1s ease; }
+    @keyframes pop { 0%{transform:scale(.5); opacity:0;} 100%{transform:scale(1); opacity:1;} }
 
     /* ❤️ HEART PARTICLE */
-    .heart {
-      position: fixed;
-      bottom: -10px;
-      font-size: 25px;
-      color: #ff5c8a;
-      animation: fly 6s linear infinite;
-      opacity: 0.8;
-      pointer-events: none;
-    }
-    @keyframes fly {
-      0% { transform: translateY(0) scale(1); opacity: 0; }
-      20% {opacity: 1;}
-      100% { transform: translateY(-120vh) scale(1.8); opacity: 0; }
-    }
+    .heart { position: fixed; bottom: -10px; font-size: 25px; color: #ff5c8a; animation: fly 6s linear infinite; opacity: 0.8; pointer-events: none; }
+    @keyframes fly { 0% { transform: translateY(0) scale(1); opacity: 0; } 20% {opacity: 1;} 100% { transform: translateY(-120vh) scale(1.8); opacity: 0; } }
   </style>
 </head>
 <body>
@@ -210,7 +141,7 @@
     <img class="gallery-img" src="https://i.ibb.co/whHFrcKQ/Whats-App-Image-2025-11-14-at-7-05-00-PM.jpg">
     <img class="gallery-img" src="https://i.ibb.co/mr7sRPh2/Whats-App-Image-2025-11-14-at-7-04-59-PM-1.jpg">
     <img class="gallery-img" src="https://i.ibb.co/GfCq8bBr/Whats-App-Image-2025-11-14-at-7-04-59-PM.jpg">
-    <img class="gallery-img" src="https://i.ibb.co/ymb7xJKC/Whats-App-Image-2025-11-14-at-7-04-58-PM.jpg">
+    <img class="gallery-img" src="https://raw.githubusercontent.com/patelbadal12222/gift1/main/image/WhatsApp%20Image%202025-11-14%20at%207.04.58%20PM.jpeg">
   </div>
 </section>
 
@@ -225,14 +156,11 @@
 
 <script>
 let current = "start";
-
 function showPage(pageId){
   document.getElementById(current).classList.remove("active");
   document.getElementById(pageId).classList.add("active");
   current = pageId;
 }
-
-/* ENTER CLICK → GO TO HOME */
 document.getElementById("enterBtn").addEventListener("click", () => {
   document.getElementById("start").classList.remove("active");
   document.getElementById("home").classList.add("active");
@@ -240,8 +168,6 @@ document.getElementById("enterBtn").addEventListener("click", () => {
   current = "home";
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
-
-/* ❤️ Floating Hearts */
 setInterval(() => {
   let heart = document.createElement("div");
   heart.classList.add("heart");
