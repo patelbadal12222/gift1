@@ -59,16 +59,16 @@
   /* Section headings */
   .section h2 {
     font-family:'Great Vibes',cursive;
-    font-size: 3rem;
-    margin-bottom: 25px;
+    font-size: 4rem; /* laptop-friendly big headings */
+    margin-bottom: 30px;
   }
 
   /* Section paragraphs */
   .section p {
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
-    font-size: 1.25rem;
-    line-height: 1.8;
+    font-size: 1.5rem; /* bigger paragraph text */
+    line-height: 2;
   }
 
   /* Landing */
@@ -83,8 +83,8 @@
     text-align:center;
   }
   #landing h1 { font-family:'Great Vibes',cursive; font-size:3rem; margin-bottom:10px; }
-  #landing p { font-size:1.2rem; margin-bottom:30px; }
-  #landing button { padding:15px 30px; font-size:1.2rem; border:none; border-radius:10px; background:#fff; color:#ff6f91; cursor:pointer; font-weight:bold; }
+  #landing p { font-size:1.5rem; margin-bottom:30px; }
+  #landing button { padding:15px 30px; font-size:1.3rem; border:none; border-radius:10px; background:#fff; color:#ff6f91; cursor:pointer; font-weight:bold; }
 
   /* Home / Wedding Celebration with background image */
   #home {
@@ -101,18 +101,33 @@
     color: white;
   }
 
-  .wishes-box { max-width:400px; margin:20px auto; display:flex; flex-direction:column; gap:10px; }
-  .wishes-box input, .wishes-box textarea { padding:10px; border-radius:10px; border:1px solid #ddd; font-size:1rem; width:100%; }
-  .wishes-box button { padding:10px; border:none; border-radius:10px; background:#ff9a9e; color:white; font-size:1rem; cursor:pointer; }
+  /* Wishes box */
+  .wishes-box { max-width:450px; margin:20px auto; display:flex; flex-direction:column; gap:15px; }
+  .wishes-box input, .wishes-box textarea {
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    font-size:1.2rem;
+    width:100%;
+  }
+  .wishes-box button {
+    font-size:1.3rem;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#ff9a9e;
+    color:white;
+    cursor:pointer;
+  }
 
-  .messages { max-width:600px; margin:20px auto; text-align:left; }
-  .message { background:#ffe6f0; padding:10px 15px; border-radius:10px; margin-bottom:10px; }
+  .messages { max-width:700px; margin:20px auto; text-align:left; }
+  .message { background:#ffe6f0; padding:15px 20px; border-radius:10px; margin-bottom:10px; font-size:1.3rem; }
 
   /* Full screen slider */
   #slider-container {
     position: relative;
     width: 100%;
-    height: 80vh;
+    height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,22 +158,28 @@
   .next { right: 20px; }
 
   /* Floating hearts */
-  .heart { position:absolute; width:20px; height:20px; background:red; transform:rotate(-45deg); animation: float 6s linear infinite; opacity:0.8; }
-  .heart:before, .heart:after { content:""; position:absolute; width:20px; height:20px; background:red; border-radius:50%; }
-  .heart:before { top:-10px; left:0; }
-  .heart:after { left:10px; top:0; }
+  .heart { position:absolute; width:25px; height:25px; background:red; transform:rotate(-45deg); animation: float 6s linear infinite; opacity:0.8; }
+  .heart:before, .heart:after { content:""; position:absolute; width:25px; height:25px; background:red; border-radius:50%; }
+  .heart:before { top:-12.5px; left:0; }
+  .heart:after { left:12.5px; top:0; }
   @keyframes float { 0% { transform: translateY(0) rotate(-45deg); opacity:0.8; } 100% { transform: translateY(-800px) rotate(-45deg); opacity:0; } }
 
   /* Responsive adjustments */
   @media (max-width: 1024px) {
-    .section { padding: 60px 20px; font-size: 1.1rem; }
-    .section h2 { font-size: 2.5rem; }
-    .section p { font-size: 1.1rem; }
+    .section { padding: 60px 20px; font-size: 1.2rem; }
+    .section h2 { font-size: 3rem; }
+    .section p { font-size: 1.3rem; }
+    .wishes-box input, .wishes-box textarea { font-size:1.1rem; padding:12px; }
+    .wishes-box button { font-size:1.2rem; padding:10px; }
+    .message { font-size:1.2rem; }
   }
   @media (max-width: 768px) {
     .section { padding: 50px 15px; font-size: 1rem; }
     .section h2 { font-size: 2rem; }
     .section p { font-size: 1rem; }
+    .wishes-box input, .wishes-box textarea { font-size:1rem; padding:10px; }
+    .wishes-box button { font-size:1rem; padding:8px; }
+    .message { font-size:1rem; }
   }
 
 </style>
