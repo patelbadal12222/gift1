@@ -23,10 +23,24 @@ section { width:100vw; min-height:100vh; display:flex; justify-content:center; a
 
 /* TEXT */
 h1,h3,p { position:relative; z-index:1; color:white; text-shadow:0 0 8px black; margin:5px 0; line-height:1.4; }
-#home p, #ourstory p { color:white; max-width:80%; }
 
-/* START BUTTON */
-#start button { font-size:22px; padding:14px 40px; border:none; border-radius:30px; background: rgba(255,255,255,0.85); cursor:pointer; z-index:1; }
+#home p, #ourstory p { color:white; max-width:900px; }
+
+/* RESPONSIVE FONT */
+#start h1 { font-size:6vw; }
+#start h3 { font-size:2.5vw; }
+#start button { font-size:2vw; padding:12px 30px; border:none; border-radius:30px; background: rgba(255,255,255,0.85); cursor:pointer; z-index:1; }
+
+#home h1, #ourstory h1 { font-size:4vw; }
+#home p, #ourstory p { font-size:1.5vw; }
+
+@media(max-width:768px){
+  #start h1 { font-size:10vw; }
+  #start h3 { font-size:4vw; }
+  #start button { font-size:4vw; padding:10px 25px; }
+  #home h1, #ourstory h1 { font-size:8vw; }
+  #home p, #ourstory p { font-size:4vw; max-width:90%; }
+}
 
 /* NAV */
 nav{ position:fixed; top:0; width:100%; background:rgba(255,255,255,0.9); padding:10px; display:none; justify-content:center; gap:30px; z-index:10; backdrop-filter:blur(6px);}
