@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-  html, body { height:100%; overflow:hidden; }
+  html, body { height:100%; overflow-x:hidden; }
 
   /* Top menu */
   .top-menu {
@@ -44,15 +44,31 @@
 
   /* Full-page sections */
   .section {
-    width:100vw;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:50px 20px;
-    position:relative;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+    font-size: 1.2rem;
+  }
+
+  /* Section headings */
+  .section h2 {
+    font-family:'Great Vibes',cursive;
+    font-size: 3rem;
+    margin-bottom: 25px;
+  }
+
+  /* Section paragraphs */
+  .section p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 1.25rem;
+    line-height: 1.8;
   }
 
   /* Landing */
@@ -77,16 +93,13 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 50px 20px;
+    padding: 80px 40px;
     background-image: url('https://raw.githubusercontent.com/patelbadal12222/gift1/main/wedding.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: white;
   }
-
-  .section h2 { font-family:'Great Vibes',cursive; font-size:2.5rem; margin-bottom:20px; }
-  .section p { max-width:700px; margin:auto; font-size:1.1rem; line-height:1.6; }
 
   .wishes-box { max-width:400px; margin:20px auto; display:flex; flex-direction:column; gap:10px; }
   .wishes-box input, .wishes-box textarea { padding:10px; border-radius:10px; border:1px solid #ddd; font-size:1rem; width:100%; }
@@ -135,6 +148,18 @@
   .heart:before { top:-10px; left:0; }
   .heart:after { left:10px; top:0; }
   @keyframes float { 0% { transform: translateY(0) rotate(-45deg); opacity:0.8; } 100% { transform: translateY(-800px) rotate(-45deg); opacity:0; } }
+
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .section { padding: 60px 20px; font-size: 1.1rem; }
+    .section h2 { font-size: 2.5rem; }
+    .section p { font-size: 1.1rem; }
+  }
+  @media (max-width: 768px) {
+    .section { padding: 50px 15px; font-size: 1rem; }
+    .section h2 { font-size: 2rem; }
+    .section p { font-size: 1rem; }
+  }
 
 </style>
 </head>
