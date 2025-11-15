@@ -9,7 +9,6 @@
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
   html, body { height:100%; overflow-x:hidden; }
 
-  /* Top menu */
   .top-menu {
     position: fixed;
     top:0;
@@ -43,10 +42,9 @@
   }
   .top-menu button:hover { background:#ff6f91; color:white; }
 
-  /* Full-page sections */
   .section {
     width: 100vw;
-    min-height: 100vh; 
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -56,26 +54,23 @@
     position: relative;
   }
 
-  /* Section headings */
   .section h2 {
     font-family:'Great Vibes',cursive;
-    font-size: 3rem; 
-    margin-bottom: 20px; 
+    font-size: 3rem;
+    margin-bottom: 20px;
   }
 
-  /* Section paragraphs */
   .section p {
     max-width: 750px;
     margin: 15px auto 0 auto;
-    font-size: 1.2rem; 
+    font-size: 1.2rem;
     line-height: 2;
   }
 
-  /* Landing */
-  #landing { 
+  #landing {
     background: url('https://raw.githubusercontent.com/patelbadal12222/gift1/main/god.png') no-repeat center center;
     background-size: cover;
-    color:white; 
+    color:white;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -83,24 +78,25 @@
     text-align:center;
     padding-top:0;
   }
-  #landing h1 { 
-    font-family:'Great Vibes',cursive; 
-    font-size:4rem; 
-    margin-bottom:20px; 
+  #landing h1 {
+    font-family:'Great Vibes',cursive;
+    font-size:4rem;
+    margin-bottom:20px;
   }
-  #landing p { font-size:1.5rem; margin-bottom:40px; }
-  #landing button { 
-    padding:20px 40px; 
-    font-size:1.5rem; 
-    border:none; 
-    border-radius:12px; 
-    background:#fff; 
-    color:#ff6f91; 
-    cursor:pointer; 
-    font-weight:bold; 
+  #landing p {
+    font-size:1.5rem; margin-bottom:40px;
+  }
+  #landing button {
+    padding:20px 40px;
+    font-size:1.5rem;
+    border:none;
+    border-radius:12px;
+    background:#fff;
+    color:#ff6f91;
+    cursor:pointer;
+    font-weight:bold;
   }
 
-  /* Home / Wedding Celebration with background image */
   #home {
     display: none;
     flex-direction: column;
@@ -115,17 +111,16 @@
     color: white;
   }
 
-  /* Wishes box */
   .wishes-box { max-width:500px; margin:20px auto; display:flex; flex-direction:column; gap:15px; }
   .wishes-box input, .wishes-box textarea {
     padding:15px;
     border-radius:10px;
     border:1px solid #ddd;
-    font-size:1.1rem; 
+    font-size:1.1rem;
     width:100%;
   }
   .wishes-box button {
-    font-size:1.2rem; 
+    font-size:1.2rem;
     padding:12px;
     border:none;
     border-radius:10px;
@@ -137,7 +132,6 @@
   .messages { max-width:750px; margin:20px auto; text-align:left; }
   .message { background:#ffe6f0; padding:12px 18px; border-radius:10px; margin-bottom:12px; font-size:1.1rem; }
 
-  /* Full screen slider */
   #slider-container {
     position: relative;
     width: 100%;
@@ -171,13 +165,6 @@
   .prev { left: 20px; }
   .next { right: 20px; }
 
-  /* Floating hearts */
-  .heart { position:absolute; width:20px; height:20px; background:red; transform:rotate(-45deg); animation: float 6s linear infinite; opacity:0.8; }
-  .heart:before, .heart:after { content:""; position:absolute; width:20px; height:20px; background:red; border-radius:50%; }
-  .heart:before { top:-10px; left:0; }
-  .heart:after { left:10px; top:0; }
-  @keyframes float { 0% { transform: translateY(0) rotate(-45deg); opacity:0.8; } 100% { transform: translateY(-800px) rotate(-45deg); opacity:0; } }
-
 </style>
 </head>
 <body>
@@ -189,15 +176,12 @@
   <button onclick="showSection('wishes')">Wishes</button>
 </div>
 
-<!-- Landing -->
 <section class="section" id="landing">
   <h1>Congratulations Chandan & Suhani!</h1>
-  <p>💖 15th November 2025 💖</p>
+  <p>15th November 2025</p>
   <button onclick="enterSite()">Enter</button>
-  <div id="hearts"></div>
 </section>
 
-<!-- Home / Wedding Celebration -->
 <section class="section" id="home">
   <h2>Our Wedding Celebration</h2>
   <p style="font-size:1.5rem; font-weight:bold; margin:15px 0;">Chandan & Suhani</p>
@@ -205,14 +189,12 @@
   <p>Let's celebrate love, laughter, and memories together!</p>
 </section>
 
-<!-- Our Story -->
 <section class="section" id="story" style="display:none;">
   <h2>Our Story</h2>
   <p>From the first meeting to this magical day, Chandan & Suhani have shared countless moments, smiles, and dreams.</p>
   <p>Their journey of love has been inspiring, and today we join in wishing them a lifetime of happiness and togetherness.</p>
 </section>
 
-<!-- Gallery -->
 <section class="section" id="gallery" style="display:none;">
   <h2>Gallery</h2>
   <div id="slider-container">
@@ -222,7 +204,6 @@
   </div>
 </section>
 
-<!-- Wishes -->
 <section class="section" id="wishes" style="display:none;">
   <h2>Wishes</h2>
   <p>Leave your blessings for Chandan & Suhani!</p>
@@ -235,17 +216,6 @@
 </section>
 
 <script>
-  const heartsContainer = document.getElementById('hearts');
-  function createHeart() {
-    const heart = document.createElement('div');
-    heart.className = 'heart';
-    heart.style.left = Math.random() * window.innerWidth + 'px';
-    heart.style.animationDuration = 4 + Math.random() * 4 + 's';
-    heartsContainer.appendChild(heart);
-    setTimeout(() => heartsContainer.removeChild(heart), 6000);
-  }
-  setInterval(createHeart, 300);
-
   function enterSite() {
     document.getElementById('landing').style.display='none';
     document.getElementById('home').style.display='flex';
@@ -272,50 +242,4 @@
   }
 
   const sliderImages = [
-    "https://raw.githubusercontent.com/patelbadal12222/gift1/main/WhatsApp%20Image%202025-11-14%20at%207.04.58%20PM.jpeg",
-    "https://raw.githubusercontent.com/patelbadal12222/gift1/main/B.jpeg",
-    "https://raw.githubusercontent.com/patelbadal12222/gift1/main/C.jpeg",
-    "https://raw.githubusercontent.com/patelbadal12222/gift1/main/D.jpeg",
-    "https://raw.githubusercontent.com/patelbadal12222/gift1/main/E.jpeg",
-    "https://raw.githubusercontent.com/patelbadal12222/gift1/main/F.jpeg"
-  ];
-  let currentIndex = 0;
-  const sliderImage = document.getElementById('slider-image');
-
-  function showImage(index) {
-    sliderImage.style.opacity = 0;
-    setTimeout(() => {
-      sliderImage.src = sliderImages[index];
-      sliderImage.style.opacity = 1;
-    }, 300);
-  }
-
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % sliderImages.length;
-    showImage(currentIndex);
-  }
-
-  function prevImage() {
-    currentIndex = (currentIndex - 1 + sliderImages.length) % sliderImages.length;
-    showImage(currentIndex);
-  }
-
-  document.addEventListener('keydown', function(e) {
-    if(document.getElementById('gallery').style.display !== 'flex') return;
-    if(e.key === 'ArrowRight') nextImage();
-    if(e.key === 'ArrowLeft') prevImage();
-  });
-
-  let touchStartX = 0;
-  let touchEndX = 0;
-  const sliderContainer = document.getElementById('slider-container');
-  sliderContainer.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
-  sliderContainer.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    if(touchEndX < touchStartX - 50) nextImage();
-    if(touchEndX > touchStartX + 50) prevImage();
-  });
-</script>
-
-</body>
-</html>
+    "https://raw.githubusercontent.com/patelbadal12222
