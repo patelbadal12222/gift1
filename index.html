@@ -46,29 +46,29 @@
   /* Full-page sections */
   .section {
     width: 100vw;
-    min-height: 100vh;
+    min-height: 100vh; 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* start from top to avoid overlap */
     align-items: center;
     text-align: center;
-    padding: 80px 40px;
+    padding: 100px 40px; /* top padding for spacing from top menu */
     position: relative;
   }
 
   /* Section headings */
   .section h2 {
     font-family:'Great Vibes',cursive;
-    font-size: 3rem; /* bigger for laptop */
-    margin-bottom: 25px;
+    font-size: 3rem; 
+    margin-bottom: 30px; /* space between heading and paragraph */
   }
 
   /* Section paragraphs */
   .section p {
     max-width: 750px;
-    margin: auto;
-    font-size: 1.2rem; /* bigger for laptop */
-    line-height: 1.8;
+    margin: 20px auto 0 auto; /* top margin for spacing between paragraphs */
+    font-size: 1.2rem; 
+    line-height: 2; /* increase spacing for readability */
   }
 
   /* Landing */
@@ -81,15 +81,16 @@
     justify-content:center;
     align-items:center;
     text-align:center;
+    padding-top:0;
   }
   #landing h1 { 
     font-family:'Great Vibes',cursive; 
-    font-size:4rem; /* bigger heading */
+    font-size:4rem; 
     margin-bottom:20px; 
   }
   #landing p { font-size:1.5rem; margin-bottom:40px; }
   #landing button { 
-    padding:20px 40px; /* bigger button */
+    padding:20px 40px; 
     font-size:1.5rem; 
     border:none; 
     border-radius:12px; 
@@ -103,10 +104,10 @@
   #home {
     display: none;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
-    padding: 80px 40px;
+    padding: 100px 40px;
     background-image: url('https://raw.githubusercontent.com/patelbadal12222/gift1/main/wedding.png');
     background-size: cover;
     background-position: center;
@@ -199,13 +200,15 @@
 <!-- Home / Wedding Celebration -->
 <section class="section" id="home">
   <h2>Our Wedding Celebration</h2>
-  <p>Welcome to the beautiful celebration of Chandan & Suhani! We are thrilled to share this special day with our beloved friends and family. Let's celebrate love, laughter, and memories together!</p>
+  <p>Welcome to the beautiful celebration of Chandan & Suhani! We are thrilled to share this special day with our beloved friends and family.</p>
+  <p>Let's celebrate love, laughter, and memories together!</p>
 </section>
 
 <!-- Our Story -->
 <section class="section" id="story" style="display:none;">
   <h2>Our Story</h2>
-  <p>From the first meeting to this magical day, Chandan & Suhani have shared countless moments, smiles, and dreams. Their journey of love has been inspiring, and today we join in wishing them a lifetime of happiness and togetherness.</p>
+  <p>From the first meeting to this magical day, Chandan & Suhani have shared countless moments, smiles, and dreams.</p>
+  <p>Their journey of love has been inspiring, and today we join in wishing them a lifetime of happiness and togetherness.</p>
 </section>
 
 <!-- Gallery -->
@@ -231,7 +234,6 @@
 </section>
 
 <script>
-  // Floating hearts
   const heartsContainer = document.getElementById('hearts');
   function createHeart() {
     const heart = document.createElement('div');
@@ -243,21 +245,18 @@
   }
   setInterval(createHeart, 300);
 
-  // Enter site
   function enterSite() {
     document.getElementById('landing').style.display='none';
     document.getElementById('home').style.display='flex';
     document.getElementById('topMenu').classList.add('active');
   }
 
-  // Show a section
   function showSection(id) {
     ['home','story','gallery','wishes'].forEach(sec=>{
       document.getElementById(sec).style.display = (sec===id)?'flex':'none';
     });
   }
 
-  // Add wishes
   function addWish() {
     const name = document.getElementById('name').value;
     const msg = document.getElementById('message').value;
@@ -271,7 +270,6 @@
     document.getElementById('message').value='';
   }
 
-  // Slider functionality
   const sliderImages = [
     "https://raw.githubusercontent.com/patelbadal12222/gift1/main/WhatsApp%20Image%202025-11-14%20at%207.04.58%20PM.jpeg",
     "https://raw.githubusercontent.com/patelbadal12222/gift1/main/B.jpeg",
@@ -301,14 +299,12 @@
     showImage(currentIndex);
   }
 
-  // Keyboard arrows
   document.addEventListener('keydown', function(e) {
     if(document.getElementById('gallery').style.display !== 'flex') return;
     if(e.key === 'ArrowRight') nextImage();
     if(e.key === 'ArrowLeft') prevImage();
   });
 
-  // Swipe support for mobile
   let touchStartX = 0;
   let touchEndX = 0;
   const sliderContainer = document.getElementById('slider-container');
